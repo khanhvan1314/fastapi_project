@@ -19,37 +19,37 @@ def test_get_version():
 def test_check_prime_with_prime_number():
     response = client.get("/check_prime/7")
     assert response.status_code == 200
-    assert response.json() == {"result": True, "number": 7}
+    assert response.json() == {"is_prime": True, "number": 7}
 
 # Test 4: Kiểm tra số nguyên tố (prime) - số không phải nguyên tố
 def test_check_prime_with_non_prime_number():
     response = client.get("/check_prime/10")
     assert response.status_code == 200
-    assert response.json() == {"result": False, "number": 10}
+    assert response.json() == {"is_prime": False, "number": 10}
 
 # Test 5: Kiểm tra số nguyên tố (prime) - số âm
 def test_check_prime_with_negative_number():
     response = client.get("/check_prime/-5")
     assert response.status_code == 200
-    assert response.json() == {"result": False, "number": -5}
+    assert response.json() == {"is_prime": False, "number": -5}
 
 # Test 6: Kiểm tra API với tham số lớn
 def test_large_prime_number():
     response = client.get("/check_prime/999983")
     assert response.status_code == 200
-    assert response.json() == {"result": True, "number": 999983}
+    assert response.json() == {"is_prime": True, "number": 999983}
 
 # Test 7: Kiểm tra số 1 (không phải nguyên tố)
 def test_prime_with_one():
     response = client.get("/check_prime/1")
     assert response.status_code == 200
-    assert response.json() == {"result": False, "number": 1}
+    assert response.json() == {"is_prime": False, "number": 1}
 
 # Test 8: Kiểm tra số 2 (số nguyên tố nhỏ nhất)
 def test_prime_with_two():
     response = client.get("/check_prime/2")
     assert response.status_code == 200
-    assert response.json() == {"result": True, "number": 2}
+    assert response.json() == {"is_prime": True, "number": 2}
 
 # Test 9: Kiểm tra input không hợp lệ
 def test_invalid_input():
